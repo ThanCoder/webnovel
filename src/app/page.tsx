@@ -1,18 +1,19 @@
-import TImage from "@/components/t_image";
+import NovelListView from "@/components/novel_list_view";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/user";
-import { currentUser } from "@clerk/nextjs/server";
-import Link from "next/link";
-import { redirect } from "next/navigation";
 
 async function Home() {
-  await getCurrentUser()
-  
+  const novels = await prisma.novel.findMany({
+    where: { isPublished: true },
+    orderBy: { date: "desc" },
+  });
+  await getCurrentUser();
+
   return (
     <div className="container">
-     
-     <h1>Wellcome</h1>
+      <h1 className="mb-9 text-1xl" >နောက်ဆုံး တင်ပြီး</h1>
 
+      <NovelListView list={novels} />
     </div>
   );
 }

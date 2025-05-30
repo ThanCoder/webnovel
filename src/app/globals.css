@@ -48,7 +48,7 @@ input[type="text"],input[type="number"] {
   @apply focus:outline-none rounded-sm p-2 w-full block outline-1 -outline-offset-1 outline-none bg-gray-700;
 }
 .form-container textarea {
-  @apply resize-none  border-2 border-gray-700 bg-gray-700 rounded-md p-2 outline-0 focus:border-none;
+  @apply   border-2 border-gray-700 bg-gray-700 rounded-md p-2 outline-0 focus:border-none;
 }
 select {
   @apply bg-gray-800 p-3 rounded-md;
@@ -73,4 +73,8 @@ select {
 }
 .success-text {
   @apply text-white capitalize text-center bg-teal-800 py-2 rounded-md;
+}
+
+.loader {
+  @apply animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid;
 }

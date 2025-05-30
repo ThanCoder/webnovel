@@ -2567,7 +2567,7 @@ export namespace Prisma {
     date?: boolean
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
     novelContentFiles?: boolean | Novel$novelContentFilesArgs<ExtArgs>
     Chapter?: boolean | Novel$ChapterArgs<ExtArgs>
     _count?: boolean | NovelCountOutputTypeDefaultArgs<ExtArgs>
@@ -2585,7 +2585,7 @@ export namespace Prisma {
     date?: boolean
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
   }, ExtArgs["result"]["novel"]>
 
   export type NovelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2600,7 +2600,7 @@ export namespace Prisma {
     date?: boolean
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
   }, ExtArgs["result"]["novel"]>
 
   export type NovelSelectScalar = {
@@ -2619,22 +2619,22 @@ export namespace Prisma {
 
   export type NovelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "author" | "translator" | "mc" | "desc" | "coverUrl" | "date" | "isAnyoneCanUploaded" | "isPublished", ExtArgs["result"]["novel"]>
   export type NovelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
     novelContentFiles?: boolean | Novel$novelContentFilesArgs<ExtArgs>
     Chapter?: boolean | Novel$ChapterArgs<ExtArgs>
     _count?: boolean | NovelCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type NovelIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
   }
   export type NovelIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Novel$userArgs<ExtArgs>
   }
 
   export type $NovelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Novel"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
       novelContentFiles: Prisma.$ContentFilePayload<ExtArgs>[]
       Chapter: Prisma.$ChapterPayload<ExtArgs>[]
     }
@@ -3044,7 +3044,7 @@ export namespace Prisma {
    */
   export interface Prisma__NovelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends Novel$userArgs<ExtArgs> = {}>(args?: Subset<T, Novel$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     novelContentFiles<T extends Novel$novelContentFilesArgs<ExtArgs> = {}>(args?: Subset<T, Novel$novelContentFilesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentFilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Chapter<T extends Novel$ChapterArgs<ExtArgs> = {}>(args?: Subset<T, Novel$ChapterArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChapterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -3483,6 +3483,25 @@ export namespace Prisma {
   }
 
   /**
+   * Novel.user
+   */
+  export type Novel$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Novel.novelContentFiles
    */
   export type Novel$novelContentFilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3795,7 +3814,7 @@ export namespace Prisma {
     type?: boolean
     date?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }, ExtArgs["result"]["contentFile"]>
 
   export type ContentFileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3809,7 +3828,7 @@ export namespace Prisma {
     type?: boolean
     date?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }, ExtArgs["result"]["contentFile"]>
 
   export type ContentFileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3823,7 +3842,7 @@ export namespace Prisma {
     type?: boolean
     date?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }, ExtArgs["result"]["contentFile"]>
 
   export type ContentFileSelectScalar = {
@@ -3841,19 +3860,19 @@ export namespace Prisma {
 
   export type ContentFileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "novelId" | "title" | "coverUrl" | "content" | "desc" | "type" | "date" | "isPublished", ExtArgs["result"]["contentFile"]>
   export type ContentFileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }
   export type ContentFileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }
   export type ContentFileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | ContentFile$novelArgs<ExtArgs>
   }
 
   export type $ContentFilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContentFile"
     objects: {
-      novel: Prisma.$NovelPayload<ExtArgs>
+      novel: Prisma.$NovelPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4260,7 +4279,7 @@ export namespace Prisma {
    */
   export interface Prisma__ContentFileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    novel<T extends NovelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NovelDefaultArgs<ExtArgs>>): Prisma__NovelClient<$Result.GetResult<Prisma.$NovelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    novel<T extends ContentFile$novelArgs<ExtArgs> = {}>(args?: Subset<T, ContentFile$novelArgs<ExtArgs>>): Prisma__NovelClient<$Result.GetResult<Prisma.$NovelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4696,6 +4715,25 @@ export namespace Prisma {
   }
 
   /**
+   * ContentFile.novel
+   */
+  export type ContentFile$novelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novel
+     */
+    select?: NovelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novel
+     */
+    omit?: NovelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NovelInclude<ExtArgs> | null
+    where?: NovelWhereInput
+  }
+
+  /**
    * ContentFile without action
    */
   export type ContentFileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4928,7 +4966,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
   export type ChapterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4938,7 +4976,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
   export type ChapterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4948,7 +4986,7 @@ export namespace Prisma {
     title?: boolean
     content?: boolean
     isPublished?: boolean
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
   export type ChapterSelectScalar = {
@@ -4962,19 +5000,19 @@ export namespace Prisma {
 
   export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "novelId" | "title" | "content" | "isPublished", ExtArgs["result"]["chapter"]>
   export type ChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }
   export type ChapterIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }
   export type ChapterIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    novel?: boolean | NovelDefaultArgs<ExtArgs>
+    novel?: boolean | Chapter$novelArgs<ExtArgs>
   }
 
   export type $ChapterPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Chapter"
     objects: {
-      novel: Prisma.$NovelPayload<ExtArgs>
+      novel: Prisma.$NovelPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5377,7 +5415,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChapterClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    novel<T extends NovelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NovelDefaultArgs<ExtArgs>>): Prisma__NovelClient<$Result.GetResult<Prisma.$NovelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    novel<T extends Chapter$novelArgs<ExtArgs> = {}>(args?: Subset<T, Chapter$novelArgs<ExtArgs>>): Prisma__NovelClient<$Result.GetResult<Prisma.$NovelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5809,6 +5847,25 @@ export namespace Prisma {
   }
 
   /**
+   * Chapter.novel
+   */
+  export type Chapter$novelArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Novel
+     */
+    select?: NovelSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Novel
+     */
+    omit?: NovelOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NovelInclude<ExtArgs> | null
+    where?: NovelWhereInput
+  }
+
+  /**
    * Chapter without action
    */
   export type ChapterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6072,7 +6129,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Novel"> | Date | string
     isAnyoneCanUploaded?: BoolFilter<"Novel"> | boolean
     isPublished?: BoolFilter<"Novel"> | boolean
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     novelContentFiles?: ContentFileListRelationFilter
     Chapter?: ChapterListRelationFilter
   }
@@ -6109,7 +6166,7 @@ export namespace Prisma {
     date?: DateTimeFilter<"Novel"> | Date | string
     isAnyoneCanUploaded?: BoolFilter<"Novel"> | boolean
     isPublished?: BoolFilter<"Novel"> | boolean
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     novelContentFiles?: ContentFileListRelationFilter
     Chapter?: ChapterListRelationFilter
   }, "id" | "title">
@@ -6164,7 +6221,7 @@ export namespace Prisma {
     type?: StringFilter<"ContentFile"> | string
     date?: DateTimeFilter<"ContentFile"> | Date | string
     isPublished?: BoolFilter<"ContentFile"> | boolean
-    novel?: XOR<NovelScalarRelationFilter, NovelWhereInput>
+    novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }
 
   export type ContentFileOrderByWithRelationInput = {
@@ -6195,7 +6252,7 @@ export namespace Prisma {
     type?: StringFilter<"ContentFile"> | string
     date?: DateTimeFilter<"ContentFile"> | Date | string
     isPublished?: BoolFilter<"ContentFile"> | boolean
-    novel?: XOR<NovelScalarRelationFilter, NovelWhereInput>
+    novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }, "id">
 
   export type ContentFileOrderByWithAggregationInput = {
@@ -6242,7 +6299,7 @@ export namespace Prisma {
     title?: StringFilter<"Chapter"> | string
     content?: StringFilter<"Chapter"> | string
     isPublished?: BoolFilter<"Chapter"> | boolean
-    novel?: XOR<NovelScalarRelationFilter, NovelWhereInput>
+    novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }
 
   export type ChapterOrderByWithRelationInput = {
@@ -6265,7 +6322,7 @@ export namespace Prisma {
     title?: StringFilter<"Chapter"> | string
     content?: StringFilter<"Chapter"> | string
     isPublished?: BoolFilter<"Chapter"> | boolean
-    novel?: XOR<NovelScalarRelationFilter, NovelWhereInput>
+    novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }, "id">
 
   export type ChapterOrderByWithAggregationInput = {
@@ -6385,7 +6442,7 @@ export namespace Prisma {
     date?: Date | string
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user: UserCreateNestedOneWithoutNovelsInput
+    user?: UserCreateNestedOneWithoutNovelsInput
     novelContentFiles?: ContentFileCreateNestedManyWithoutNovelInput
     Chapter?: ChapterCreateNestedManyWithoutNovelInput
   }
@@ -6416,7 +6473,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     isAnyoneCanUploaded?: BoolFieldUpdateOperationsInput | boolean
     isPublished?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutNovelsNestedInput
+    user?: UserUpdateOneWithoutNovelsNestedInput
     novelContentFiles?: ContentFileUpdateManyWithoutNovelNestedInput
     Chapter?: ChapterUpdateManyWithoutNovelNestedInput
   }
@@ -6486,7 +6543,7 @@ export namespace Prisma {
     type: string
     date?: Date | string
     isPublished?: boolean
-    novel: NovelCreateNestedOneWithoutNovelContentFilesInput
+    novel?: NovelCreateNestedOneWithoutNovelContentFilesInput
   }
 
   export type ContentFileUncheckedCreateInput = {
@@ -6511,7 +6568,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
-    novel?: NovelUpdateOneRequiredWithoutNovelContentFilesNestedInput
+    novel?: NovelUpdateOneWithoutNovelContentFilesNestedInput
   }
 
   export type ContentFileUncheckedUpdateInput = {
@@ -6569,7 +6626,7 @@ export namespace Prisma {
     title: string
     content: string
     isPublished?: boolean
-    novel: NovelCreateNestedOneWithoutChapterInput
+    novel?: NovelCreateNestedOneWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateInput = {
@@ -6586,7 +6643,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
-    novel?: NovelUpdateOneRequiredWithoutChapterNestedInput
+    novel?: NovelUpdateOneWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateInput = {
@@ -6748,9 +6805,9 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type ContentFileListRelationFilter = {
@@ -6839,9 +6896,9 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NovelScalarRelationFilter = {
-    is?: NovelWhereInput
-    isNot?: NovelWhereInput
+  export type NovelNullableScalarRelationFilter = {
+    is?: NovelWhereInput | null
+    isNot?: NovelWhereInput | null
   }
 
   export type ContentFileCountOrderByAggregateInput = {
@@ -7022,10 +7079,12 @@ export namespace Prisma {
     connect?: ChapterWhereUniqueInput | ChapterWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutNovelsNestedInput = {
+  export type UserUpdateOneWithoutNovelsNestedInput = {
     create?: XOR<UserCreateWithoutNovelsInput, UserUncheckedCreateWithoutNovelsInput>
     connectOrCreate?: UserCreateOrConnectWithoutNovelsInput
     upsert?: UserUpsertWithoutNovelsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNovelsInput, UserUpdateWithoutNovelsInput>, UserUncheckedUpdateWithoutNovelsInput>
   }
@@ -7100,10 +7159,12 @@ export namespace Prisma {
     connect?: NovelWhereUniqueInput
   }
 
-  export type NovelUpdateOneRequiredWithoutNovelContentFilesNestedInput = {
+  export type NovelUpdateOneWithoutNovelContentFilesNestedInput = {
     create?: XOR<NovelCreateWithoutNovelContentFilesInput, NovelUncheckedCreateWithoutNovelContentFilesInput>
     connectOrCreate?: NovelCreateOrConnectWithoutNovelContentFilesInput
     upsert?: NovelUpsertWithoutNovelContentFilesInput
+    disconnect?: NovelWhereInput | boolean
+    delete?: NovelWhereInput | boolean
     connect?: NovelWhereUniqueInput
     update?: XOR<XOR<NovelUpdateToOneWithWhereWithoutNovelContentFilesInput, NovelUpdateWithoutNovelContentFilesInput>, NovelUncheckedUpdateWithoutNovelContentFilesInput>
   }
@@ -7114,10 +7175,12 @@ export namespace Prisma {
     connect?: NovelWhereUniqueInput
   }
 
-  export type NovelUpdateOneRequiredWithoutChapterNestedInput = {
+  export type NovelUpdateOneWithoutChapterNestedInput = {
     create?: XOR<NovelCreateWithoutChapterInput, NovelUncheckedCreateWithoutChapterInput>
     connectOrCreate?: NovelCreateOrConnectWithoutChapterInput
     upsert?: NovelUpsertWithoutChapterInput
+    disconnect?: NovelWhereInput | boolean
+    delete?: NovelWhereInput | boolean
     connect?: NovelWhereUniqueInput
     update?: XOR<XOR<NovelUpdateToOneWithWhereWithoutChapterInput, NovelUpdateWithoutChapterInput>, NovelUncheckedUpdateWithoutChapterInput>
   }
@@ -7489,7 +7552,7 @@ export namespace Prisma {
     date?: Date | string
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user: UserCreateNestedOneWithoutNovelsInput
+    user?: UserCreateNestedOneWithoutNovelsInput
     Chapter?: ChapterCreateNestedManyWithoutNovelInput
   }
 
@@ -7534,7 +7597,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     isAnyoneCanUploaded?: BoolFieldUpdateOperationsInput | boolean
     isPublished?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutNovelsNestedInput
+    user?: UserUpdateOneWithoutNovelsNestedInput
     Chapter?: ChapterUpdateManyWithoutNovelNestedInput
   }
 
@@ -7563,7 +7626,7 @@ export namespace Prisma {
     date?: Date | string
     isAnyoneCanUploaded?: boolean
     isPublished?: boolean
-    user: UserCreateNestedOneWithoutNovelsInput
+    user?: UserCreateNestedOneWithoutNovelsInput
     novelContentFiles?: ContentFileCreateNestedManyWithoutNovelInput
   }
 
@@ -7608,7 +7671,7 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     isAnyoneCanUploaded?: BoolFieldUpdateOperationsInput | boolean
     isPublished?: BoolFieldUpdateOperationsInput | boolean
-    user?: UserUpdateOneRequiredWithoutNovelsNestedInput
+    user?: UserUpdateOneWithoutNovelsNestedInput
     novelContentFiles?: ContentFileUpdateManyWithoutNovelNestedInput
   }
 

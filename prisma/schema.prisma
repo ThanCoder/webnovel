@@ -16,7 +16,7 @@ datasource db {
 }
 
 model User {
-  id         String @id @unique 
+  id         String @id @unique
   name       String
   email      String
   password   String
@@ -43,7 +43,7 @@ model Novel {
   isAnyoneCanUploaded Boolean @default(true)
   isPublished         Boolean @default(true)
 
-  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   novelContentFiles ContentFile[]
   Chapter           Chapter[]
 }
@@ -61,7 +61,7 @@ model ContentFile {
 
   isPublished Boolean @default(true)
 
-  novel Novel @relation(fields: [novelId], references: [id], onDelete: Cascade)
+  novel Novel? @relation(fields: [novelId], references: [id], onDelete: Cascade)
 }
 
 model Chapter {
@@ -73,5 +73,5 @@ model Chapter {
 
   isPublished Boolean @default(true)
 
-  novel Novel @relation(fields: [novelId], references: [id], onDelete: Cascade)
+  novel Novel? @relation(fields: [novelId], references: [id], onDelete: Cascade)
 }
