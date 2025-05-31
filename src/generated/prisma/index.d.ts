@@ -3582,19 +3582,17 @@ export namespace Prisma {
 
   export type ContentFileAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     novelId: number | null
   }
 
   export type ContentFileSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     novelId: number | null
   }
 
   export type ContentFileMinAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     novelId: number | null
     title: string | null
     coverUrl: string | null
@@ -3607,7 +3605,7 @@ export namespace Prisma {
 
   export type ContentFileMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     novelId: number | null
     title: string | null
     coverUrl: string | null
@@ -3635,13 +3633,11 @@ export namespace Prisma {
 
   export type ContentFileAvgAggregateInputType = {
     id?: true
-    userId?: true
     novelId?: true
   }
 
   export type ContentFileSumAggregateInputType = {
     id?: true
-    userId?: true
     novelId?: true
   }
 
@@ -3773,7 +3769,7 @@ export namespace Prisma {
 
   export type ContentFileGroupByOutputType = {
     id: number
-    userId: number
+    userId: string
     novelId: number
     title: string
     coverUrl: string
@@ -3876,7 +3872,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
+      userId: string
       novelId: number
       title: string
       coverUrl: string
@@ -4310,7 +4306,7 @@ export namespace Prisma {
    */
   interface ContentFileFieldRefs {
     readonly id: FieldRef<"ContentFile", 'Int'>
-    readonly userId: FieldRef<"ContentFile", 'Int'>
+    readonly userId: FieldRef<"ContentFile", 'String'>
     readonly novelId: FieldRef<"ContentFile", 'Int'>
     readonly title: FieldRef<"ContentFile", 'String'>
     readonly coverUrl: FieldRef<"ContentFile", 'String'>
@@ -4766,32 +4762,36 @@ export namespace Prisma {
 
   export type ChapterAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     novelId: number | null
+    chapterNumber: number | null
   }
 
   export type ChapterSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     novelId: number | null
+    chapterNumber: number | null
   }
 
   export type ChapterMinAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     novelId: number | null
     title: string | null
+    chapterNumber: number | null
     content: string | null
     isPublished: boolean | null
+    date: Date | null
   }
 
   export type ChapterMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     novelId: number | null
     title: string | null
+    chapterNumber: number | null
     content: string | null
     isPublished: boolean | null
+    date: Date | null
   }
 
   export type ChapterCountAggregateOutputType = {
@@ -4799,22 +4799,24 @@ export namespace Prisma {
     userId: number
     novelId: number
     title: number
+    chapterNumber: number
     content: number
     isPublished: number
+    date: number
     _all: number
   }
 
 
   export type ChapterAvgAggregateInputType = {
     id?: true
-    userId?: true
     novelId?: true
+    chapterNumber?: true
   }
 
   export type ChapterSumAggregateInputType = {
     id?: true
-    userId?: true
     novelId?: true
+    chapterNumber?: true
   }
 
   export type ChapterMinAggregateInputType = {
@@ -4822,8 +4824,10 @@ export namespace Prisma {
     userId?: true
     novelId?: true
     title?: true
+    chapterNumber?: true
     content?: true
     isPublished?: true
+    date?: true
   }
 
   export type ChapterMaxAggregateInputType = {
@@ -4831,8 +4835,10 @@ export namespace Prisma {
     userId?: true
     novelId?: true
     title?: true
+    chapterNumber?: true
     content?: true
     isPublished?: true
+    date?: true
   }
 
   export type ChapterCountAggregateInputType = {
@@ -4840,8 +4846,10 @@ export namespace Prisma {
     userId?: true
     novelId?: true
     title?: true
+    chapterNumber?: true
     content?: true
     isPublished?: true
+    date?: true
     _all?: true
   }
 
@@ -4933,11 +4941,13 @@ export namespace Prisma {
 
   export type ChapterGroupByOutputType = {
     id: number
-    userId: number
+    userId: string
     novelId: number
     title: string
+    chapterNumber: number
     content: string
     isPublished: boolean
+    date: Date
     _count: ChapterCountAggregateOutputType | null
     _avg: ChapterAvgAggregateOutputType | null
     _sum: ChapterSumAggregateOutputType | null
@@ -4964,8 +4974,10 @@ export namespace Prisma {
     userId?: boolean
     novelId?: boolean
     title?: boolean
+    chapterNumber?: boolean
     content?: boolean
     isPublished?: boolean
+    date?: boolean
     novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
@@ -4974,8 +4986,10 @@ export namespace Prisma {
     userId?: boolean
     novelId?: boolean
     title?: boolean
+    chapterNumber?: boolean
     content?: boolean
     isPublished?: boolean
+    date?: boolean
     novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
@@ -4984,8 +4998,10 @@ export namespace Prisma {
     userId?: boolean
     novelId?: boolean
     title?: boolean
+    chapterNumber?: boolean
     content?: boolean
     isPublished?: boolean
+    date?: boolean
     novel?: boolean | Chapter$novelArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
@@ -4994,11 +5010,13 @@ export namespace Prisma {
     userId?: boolean
     novelId?: boolean
     title?: boolean
+    chapterNumber?: boolean
     content?: boolean
     isPublished?: boolean
+    date?: boolean
   }
 
-  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "novelId" | "title" | "content" | "isPublished", ExtArgs["result"]["chapter"]>
+  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "novelId" | "title" | "chapterNumber" | "content" | "isPublished" | "date", ExtArgs["result"]["chapter"]>
   export type ChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     novel?: boolean | Chapter$novelArgs<ExtArgs>
   }
@@ -5016,11 +5034,13 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
+      userId: string
       novelId: number
       title: string
+      chapterNumber: number
       content: string
       isPublished: boolean
+      date: Date
     }, ExtArgs["result"]["chapter"]>
     composites: {}
   }
@@ -5446,11 +5466,13 @@ export namespace Prisma {
    */
   interface ChapterFieldRefs {
     readonly id: FieldRef<"Chapter", 'Int'>
-    readonly userId: FieldRef<"Chapter", 'Int'>
+    readonly userId: FieldRef<"Chapter", 'String'>
     readonly novelId: FieldRef<"Chapter", 'Int'>
     readonly title: FieldRef<"Chapter", 'String'>
+    readonly chapterNumber: FieldRef<"Chapter", 'Int'>
     readonly content: FieldRef<"Chapter", 'String'>
     readonly isPublished: FieldRef<"Chapter", 'Boolean'>
+    readonly date: FieldRef<"Chapter", 'DateTime'>
   }
     
 
@@ -5950,8 +5972,10 @@ export namespace Prisma {
     userId: 'userId',
     novelId: 'novelId',
     title: 'title',
+    chapterNumber: 'chapterNumber',
     content: 'content',
-    isPublished: 'isPublished'
+    isPublished: 'isPublished',
+    date: 'date'
   };
 
   export type ChapterScalarFieldEnum = (typeof ChapterScalarFieldEnum)[keyof typeof ChapterScalarFieldEnum]
@@ -6212,7 +6236,7 @@ export namespace Prisma {
     OR?: ContentFileWhereInput[]
     NOT?: ContentFileWhereInput | ContentFileWhereInput[]
     id?: IntFilter<"ContentFile"> | number
-    userId?: IntFilter<"ContentFile"> | number
+    userId?: StringFilter<"ContentFile"> | string
     novelId?: IntFilter<"ContentFile"> | number
     title?: StringFilter<"ContentFile"> | string
     coverUrl?: StringFilter<"ContentFile"> | string
@@ -6243,7 +6267,7 @@ export namespace Prisma {
     AND?: ContentFileWhereInput | ContentFileWhereInput[]
     OR?: ContentFileWhereInput[]
     NOT?: ContentFileWhereInput | ContentFileWhereInput[]
-    userId?: IntFilter<"ContentFile"> | number
+    userId?: StringFilter<"ContentFile"> | string
     novelId?: IntFilter<"ContentFile"> | number
     title?: StringFilter<"ContentFile"> | string
     coverUrl?: StringFilter<"ContentFile"> | string
@@ -6278,7 +6302,7 @@ export namespace Prisma {
     OR?: ContentFileScalarWhereWithAggregatesInput[]
     NOT?: ContentFileScalarWhereWithAggregatesInput | ContentFileScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"ContentFile"> | number
-    userId?: IntWithAggregatesFilter<"ContentFile"> | number
+    userId?: StringWithAggregatesFilter<"ContentFile"> | string
     novelId?: IntWithAggregatesFilter<"ContentFile"> | number
     title?: StringWithAggregatesFilter<"ContentFile"> | string
     coverUrl?: StringWithAggregatesFilter<"ContentFile"> | string
@@ -6294,11 +6318,13 @@ export namespace Prisma {
     OR?: ChapterWhereInput[]
     NOT?: ChapterWhereInput | ChapterWhereInput[]
     id?: IntFilter<"Chapter"> | number
-    userId?: IntFilter<"Chapter"> | number
+    userId?: StringFilter<"Chapter"> | string
     novelId?: IntFilter<"Chapter"> | number
     title?: StringFilter<"Chapter"> | string
+    chapterNumber?: IntFilter<"Chapter"> | number
     content?: StringFilter<"Chapter"> | string
     isPublished?: BoolFilter<"Chapter"> | boolean
+    date?: DateTimeFilter<"Chapter"> | Date | string
     novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }
 
@@ -6307,8 +6333,10 @@ export namespace Prisma {
     userId?: SortOrder
     novelId?: SortOrder
     title?: SortOrder
+    chapterNumber?: SortOrder
     content?: SortOrder
     isPublished?: SortOrder
+    date?: SortOrder
     novel?: NovelOrderByWithRelationInput
   }
 
@@ -6317,11 +6345,13 @@ export namespace Prisma {
     AND?: ChapterWhereInput | ChapterWhereInput[]
     OR?: ChapterWhereInput[]
     NOT?: ChapterWhereInput | ChapterWhereInput[]
-    userId?: IntFilter<"Chapter"> | number
+    userId?: StringFilter<"Chapter"> | string
     novelId?: IntFilter<"Chapter"> | number
     title?: StringFilter<"Chapter"> | string
+    chapterNumber?: IntFilter<"Chapter"> | number
     content?: StringFilter<"Chapter"> | string
     isPublished?: BoolFilter<"Chapter"> | boolean
+    date?: DateTimeFilter<"Chapter"> | Date | string
     novel?: XOR<NovelNullableScalarRelationFilter, NovelWhereInput> | null
   }, "id">
 
@@ -6330,8 +6360,10 @@ export namespace Prisma {
     userId?: SortOrder
     novelId?: SortOrder
     title?: SortOrder
+    chapterNumber?: SortOrder
     content?: SortOrder
     isPublished?: SortOrder
+    date?: SortOrder
     _count?: ChapterCountOrderByAggregateInput
     _avg?: ChapterAvgOrderByAggregateInput
     _max?: ChapterMaxOrderByAggregateInput
@@ -6344,11 +6376,13 @@ export namespace Prisma {
     OR?: ChapterScalarWhereWithAggregatesInput[]
     NOT?: ChapterScalarWhereWithAggregatesInput | ChapterScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Chapter"> | number
-    userId?: IntWithAggregatesFilter<"Chapter"> | number
+    userId?: StringWithAggregatesFilter<"Chapter"> | string
     novelId?: IntWithAggregatesFilter<"Chapter"> | number
     title?: StringWithAggregatesFilter<"Chapter"> | string
+    chapterNumber?: IntWithAggregatesFilter<"Chapter"> | number
     content?: StringWithAggregatesFilter<"Chapter"> | string
     isPublished?: BoolWithAggregatesFilter<"Chapter"> | boolean
+    date?: DateTimeWithAggregatesFilter<"Chapter"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -6535,7 +6569,7 @@ export namespace Prisma {
   }
 
   export type ContentFileCreateInput = {
-    userId: number
+    userId: string
     title: string
     coverUrl: string
     content: string
@@ -6548,7 +6582,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedCreateInput = {
     id?: number
-    userId: number
+    userId: string
     novelId: number
     title: string
     coverUrl: string
@@ -6560,7 +6594,7 @@ export namespace Prisma {
   }
 
   export type ContentFileUpdateInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -6573,7 +6607,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     novelId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
@@ -6586,7 +6620,7 @@ export namespace Prisma {
 
   export type ContentFileCreateManyInput = {
     id?: number
-    userId: number
+    userId: string
     novelId: number
     title: string
     coverUrl: string
@@ -6598,7 +6632,7 @@ export namespace Prisma {
   }
 
   export type ContentFileUpdateManyMutationInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -6610,7 +6644,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     novelId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
@@ -6622,62 +6656,76 @@ export namespace Prisma {
   }
 
   export type ChapterCreateInput = {
-    userId: number
+    userId: string
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
     novel?: NovelCreateNestedOneWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateInput = {
     id?: number
-    userId: number
+    userId: string
     novelId: number
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
   }
 
   export type ChapterUpdateInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     novel?: NovelUpdateOneWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     novelId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChapterCreateManyInput = {
     id?: number
-    userId: number
+    userId: string
     novelId: number
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
   }
 
   export type ChapterUpdateManyMutationInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChapterUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     novelId?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6916,7 +6964,6 @@ export namespace Prisma {
 
   export type ContentFileAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     novelId?: SortOrder
   }
 
@@ -6948,7 +6995,6 @@ export namespace Prisma {
 
   export type ContentFileSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     novelId?: SortOrder
   }
 
@@ -6957,14 +7003,16 @@ export namespace Prisma {
     userId?: SortOrder
     novelId?: SortOrder
     title?: SortOrder
+    chapterNumber?: SortOrder
     content?: SortOrder
     isPublished?: SortOrder
+    date?: SortOrder
   }
 
   export type ChapterAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     novelId?: SortOrder
+    chapterNumber?: SortOrder
   }
 
   export type ChapterMaxOrderByAggregateInput = {
@@ -6972,8 +7020,10 @@ export namespace Prisma {
     userId?: SortOrder
     novelId?: SortOrder
     title?: SortOrder
+    chapterNumber?: SortOrder
     content?: SortOrder
     isPublished?: SortOrder
+    date?: SortOrder
   }
 
   export type ChapterMinOrderByAggregateInput = {
@@ -6981,14 +7031,16 @@ export namespace Prisma {
     userId?: SortOrder
     novelId?: SortOrder
     title?: SortOrder
+    chapterNumber?: SortOrder
     content?: SortOrder
     isPublished?: SortOrder
+    date?: SortOrder
   }
 
   export type ChapterSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     novelId?: SortOrder
+    chapterNumber?: SortOrder
   }
 
   export type NovelCreateNestedManyWithoutUserInput = {
@@ -7392,7 +7444,7 @@ export namespace Prisma {
   }
 
   export type ContentFileCreateWithoutNovelInput = {
-    userId: number
+    userId: string
     title: string
     coverUrl: string
     content: string
@@ -7404,7 +7456,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedCreateWithoutNovelInput = {
     id?: number
-    userId: number
+    userId: string
     title: string
     coverUrl: string
     content: string
@@ -7425,18 +7477,22 @@ export namespace Prisma {
   }
 
   export type ChapterCreateWithoutNovelInput = {
-    userId: number
+    userId: string
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
   }
 
   export type ChapterUncheckedCreateWithoutNovelInput = {
     id?: number
-    userId: number
+    userId: string
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
   }
 
   export type ChapterCreateOrConnectWithoutNovelInput = {
@@ -7503,7 +7559,7 @@ export namespace Prisma {
     OR?: ContentFileScalarWhereInput[]
     NOT?: ContentFileScalarWhereInput | ContentFileScalarWhereInput[]
     id?: IntFilter<"ContentFile"> | number
-    userId?: IntFilter<"ContentFile"> | number
+    userId?: StringFilter<"ContentFile"> | string
     novelId?: IntFilter<"ContentFile"> | number
     title?: StringFilter<"ContentFile"> | string
     coverUrl?: StringFilter<"ContentFile"> | string
@@ -7535,11 +7591,13 @@ export namespace Prisma {
     OR?: ChapterScalarWhereInput[]
     NOT?: ChapterScalarWhereInput | ChapterScalarWhereInput[]
     id?: IntFilter<"Chapter"> | number
-    userId?: IntFilter<"Chapter"> | number
+    userId?: StringFilter<"Chapter"> | string
     novelId?: IntFilter<"Chapter"> | number
     title?: StringFilter<"Chapter"> | string
+    chapterNumber?: IntFilter<"Chapter"> | number
     content?: StringFilter<"Chapter"> | string
     isPublished?: BoolFilter<"Chapter"> | boolean
+    date?: DateTimeFilter<"Chapter"> | Date | string
   }
 
   export type NovelCreateWithoutNovelContentFilesInput = {
@@ -7747,7 +7805,7 @@ export namespace Prisma {
 
   export type ContentFileCreateManyNovelInput = {
     id?: number
-    userId: number
+    userId: string
     title: string
     coverUrl: string
     content: string
@@ -7759,14 +7817,16 @@ export namespace Prisma {
 
   export type ChapterCreateManyNovelInput = {
     id?: number
-    userId: number
+    userId: string
     title: string
+    chapterNumber: number
     content: string
     isPublished?: boolean
+    date?: Date | string
   }
 
   export type ContentFileUpdateWithoutNovelInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -7778,7 +7838,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedUpdateWithoutNovelInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -7790,7 +7850,7 @@ export namespace Prisma {
 
   export type ContentFileUncheckedUpdateManyWithoutNovelInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     coverUrl?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -7801,26 +7861,32 @@ export namespace Prisma {
   }
 
   export type ChapterUpdateWithoutNovelInput = {
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChapterUncheckedUpdateWithoutNovelInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ChapterUncheckedUpdateManyWithoutNovelInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    chapterNumber?: IntFieldUpdateOperationsInput | number
     content?: StringFieldUpdateOperationsInput | string
     isPublished?: BoolFieldUpdateOperationsInput | boolean
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

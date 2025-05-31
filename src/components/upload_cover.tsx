@@ -1,6 +1,6 @@
 "use client";
 
-import { uploadCoverAction } from "@/app/actions/upload_cover_action";
+import { uploadCoverAction } from "@/actions/upload_cover_action";
 import Image from "next/image";
 import { useActionState, useEffect, useState } from "react";
 

@@ -24,13 +24,13 @@ async function novelView({ params }: { params: Promise<{ id: string }> }) {
   
 
   return (
-    <div className="container my-3">
+    <div className="container cmt">
       <div className="flex gap-3">
         {/* cover */}
         <TImage src={novel?.coverUrl} width={250} height={300} />
         {/* right */}
         <div className="right grid gap-1 justify-start items-start">
-          <div className="title text-4xl">အမည်: {novel?.title}</div>
+          <div className="title text-2xl">အမည်: {novel?.title}</div>
           <div className="text-2xl">စာရေးသူ: {novel?.author}</div>
           <div className="text-2xl">ဘာသာပြန်: {novel?.translator}</div>
           <div className="text-2xl">အထိက ဇောတ်ကောင်: {novel?.mc}</div>

@@ -163,8 +163,10 @@ exports.Prisma.ChapterScalarFieldEnum = {
   userId: 'userId',
   novelId: 'novelId',
   title: 'title',
+  chapterNumber: 'chapterNumber',
   content: 'content',
-  isPublished: 'isPublished'
+  isPublished: 'isPublished',
+  date: 'date'
 };
 
 exports.Prisma.SortOrder = {

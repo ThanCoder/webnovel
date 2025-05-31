@@ -50,7 +50,7 @@ model Novel {
 
 model ContentFile {
   id       Int      @id @default(autoincrement())
-  userId   Int
+  userId   String
   novelId  Int
   title    String
   coverUrl String
@@ -65,13 +65,15 @@ model ContentFile {
 }
 
 model Chapter {
-  id      Int    @id @default(autoincrement())
-  userId  Int
-  novelId Int
-  title   String
-  content String
+  id            Int    @id @default(autoincrement())
+  userId        String
+  novelId       Int
+  title         String
+  chapterNumber Int
+  content       String
 
-  isPublished Boolean @default(true)
+  isPublished Boolean  @default(true)
+  date        DateTime @default(now())
 
   novel Novel? @relation(fields: [novelId], references: [id], onDelete: Cascade)
 }

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "online web novel && myanmar translated novel",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

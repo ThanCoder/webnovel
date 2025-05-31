@@ -1,6 +1,6 @@
 "use client";
 
-import { createNovelAction } from "@/app/actions/novel_actions";
+import { createNovelAction } from "@/actions/novel_actions";
 import TImage from "@/components/t_image";
 import UploadCover from "@/components/upload_cover";
 import UploadedImageList from "@/components/uploaded_image_list";
@@ -29,7 +29,7 @@ function Form({ userId }: { userId: string }) {
           />
         </div>
         <div className="form-container">
-          <label htmlFor="author">author</label>
+          <label htmlFor="author">စာရေးသူ</label>
           <input
             type="text"
             name="author"
@@ -40,7 +40,7 @@ function Form({ userId }: { userId: string }) {
         </div>
 
         <div className="form-container">
-          <label htmlFor="translator">translator</label>
+          <label htmlFor="translator">ဘာသာပြန်သူ</label>
           <input
             type="text"
             name="translator"
@@ -50,7 +50,7 @@ function Form({ userId }: { userId: string }) {
           />
         </div>
         <div className="form-container">
-          <label htmlFor="mc">mc</label>
+          <label htmlFor="mc">အထိက ဇောတ်ကောင်</label>
           <input
             type="text"
             name="mc"
@@ -77,8 +77,8 @@ function Form({ userId }: { userId: string }) {
         </div>
 
         <div className="form-container">
-          <label htmlFor="description">description</label>
-          <textarea name="description" id="description" placeholder="description..."  />
+          <label htmlFor="description">description or review</label>
+          <textarea className="min-h-50" name="description" id="description" placeholder="description..."  />
         </div>
         <div className="flex justify-end">
           <button type="submit">{pending ? "Adding..." : "Add"}</button>

@@ -1,24 +1,18 @@
 "use client";
-import TLoader from "@/components/t_loader";
+
 import { Novel } from "@/generated/prisma";
 import { useState } from "react";
+import ChapterList from "./chapter_list";
+import ContentList from "./content_list";
 
 function NovelTab({ novel }: { novel: Novel }) {
   const tabs = [
     {
       id: "home",
-      label: "Home",
-      content: (
-        <div
-          className="whitespace-pre-line"
-          dangerouslySetInnerHTML={{
-            __html: novel.desc
-          }}
-        ></div>
-      ),
+      label: "Home"
     },
-    { id: "chapter", label: "Chapter", content: <div>chapter</div> },
-    { id: "contentFiles", label: "Content Files", content: <div>Content</div> },
+    { id: "chapter", label: "Chapter" },
+    { id: "contentFiles", label: "Content Files" },
   ];
   const [currentTab, setCurrentTab] = useState(tabs[0]);
 
@@ -37,7 +31,20 @@ function NovelTab({ novel }: { novel: Novel }) {
           </div>
         ))}
       </div>
-      <div className="tab-view my-4 mb-9">{currentTab.content}</div>
+      <div className="tab-view my-4 mb-9">
+        {currentTab.id === "home" ? (
+          <div
+            className="whitespace-pre-line"
+            dangerouslySetInnerHTML={{
+              __html: novel.desc,
+            }}
+          ></div>
+        ) : null}
+        {currentTab.id === "chapter" ? <ChapterList novel={novel} /> : null}
+        {currentTab.id === "contentFiles" ? (
+          <ContentList novel={novel} />
+        ) : null}
+      </div>
     </div>
   );
 }
