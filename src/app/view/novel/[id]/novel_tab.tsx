@@ -23,7 +23,7 @@ function NovelTab({ novel }: { novel: Novel }) {
           <div
             key={tab.id}
             onClick={(e) => setCurrentTab(tab)}
-            className={`tab-item  text-white text-2xl rounded-md px-2 py-3 hover:cursor-pointer hover:bg-teal-900 ${
+            className={`tab-item  text-white rounded-md px-2 py-3 hover:cursor-pointer hover:bg-teal-900 ${
               tab.id == currentTab.id ? "bg-teal-900" : ""
             }`}
           >
@@ -31,7 +31,7 @@ function NovelTab({ novel }: { novel: Novel }) {
           </div>
         ))}
       </div>
-      <div className="tab-view my-4 mb-9">
+      <div className="tab-view my-4 mb-9 p-4">
         {currentTab.id === "home" ? (
           <div
             className="whitespace-pre-line"

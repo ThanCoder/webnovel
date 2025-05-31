@@ -1,10 +1,16 @@
+export enum TImageBoxFit {
+  fill='object-fill',
+  contain='object-contain',
+  cover='object-cover',
 
+}
 type TImageProps = {
   src: string | undefined;
   alt?: string;
   width?: number;
   height?: number;
   defaultSrc?: string;
+  fit?:TImageBoxFit;
 };
 
 function TImage({
@@ -13,6 +19,7 @@ function TImage({
   height = 150,
   defaultSrc = "/cover.png",
   src = "",
+  fit=TImageBoxFit.cover,
 }: TImageProps) {
   if (src && src !== "") {
     return (
@@ -23,7 +30,7 @@ function TImage({
           overflow: "hidden",
         }}
       >
-        <img alt={alt} src={src} className="w-full h-full object-cover" />
+        <img alt={alt} src={src} className={`w-full h-full ${fit}`} />
       </div>
     );
   }
@@ -33,7 +40,7 @@ function TImage({
     <div
       style={{ width: `${width}px`, height: `${height}px`, overflow: "hidden" }}
     >
-      <img alt={alt} src={defaultSrc} className="w-full h-full object-cover" />
+      <img alt={alt} src={defaultSrc} className={`w-full h-full ${fit}`} />
     </div>
   );
 }

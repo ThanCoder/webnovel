@@ -42,7 +42,7 @@ function ChapterList({ novel }: { novel: Novel }) {
           key={chapter.id}
           className="item bg-gray-700 p-3 mb-3 rounded-md hover:cursor-pointer hover:bg-gray-800"
         >
-          <Link href={`/chapter/view/${chapter.id}`}>
+          <Link href={`/view/chapter/${chapter.novelId}/${chapter.chapterNumber}`}>
             <div className="title">Title: {chapter.title}</div>
             <div className="Chapter">Chapter: {chapter.chapterNumber}</div>
           </Link>

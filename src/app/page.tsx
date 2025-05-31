@@ -10,8 +10,8 @@ async function Home() {
   await getCurrentUser();
 
   return (
-    <div className="container">
-      <h1 className="mb-9 text-1xl" >နောက်ဆုံး တင်ပြီး</h1>
+    <div className="container mx-3">
+      <h1 className="mb-9 text-1xl" >Latest</h1>
 
       <NovelListView list={novels} />
     </div>

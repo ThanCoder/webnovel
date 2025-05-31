@@ -1,4 +1,4 @@
-import TImage from "@/components/t_image";
+import TImage, { TImageBoxFit } from "@/components/t_image";
 import TLoader from "@/components/t_loader";
 import TTimeAgo from "@/components/time_ago";
 import { prisma } from "@/lib/prisma";
@@ -22,19 +22,18 @@ async function novelView({ params }: { params: Promise<{ id: string }> }) {
   }
 
   
-
   return (
     <div className="container cmt">
-      <div className="flex gap-3">
+      <div className="flex gap-3 flex-wrap items-center justify-center mb-4">
         {/* cover */}
-        <TImage src={novel?.coverUrl} width={250} height={300} />
+        <TImage src={novel?.coverUrl} width={200} height={200} fit={TImageBoxFit.fill} />
         {/* right */}
         <div className="right grid gap-1 justify-start items-start">
-          <div className="title text-2xl">အမည်: {novel?.title}</div>
-          <div className="text-2xl">စာရေးသူ: {novel?.author}</div>
-          <div className="text-2xl">ဘာသာပြန်: {novel?.translator}</div>
-          <div className="text-2xl">အထိက ဇောတ်ကောင်: {novel?.mc}</div>
-          <div className="text-2xl">
+          <div className="title ">အမည်: {novel?.title}</div>
+          <div className="sm:text-lg ">စာရေးသူ: {novel?.author}</div>
+          <div className="">ဘာသာပြန်: {novel?.translator}</div>
+          <div className="">အထိက ဇောတ်ကောင်: {novel?.mc}</div>
+          <div className="">
             ရက်စွဲ: <TTimeAgo date={novel?.date} />{" "}
           </div>
           {/* form */}

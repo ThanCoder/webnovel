@@ -4,6 +4,7 @@ import TLoader from "@/components/t_loader";
 import TTimeAgo from "@/components/time_ago";
 import { Chapter, ContentFile, Novel } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
+import { ContentFileTypes } from "@/types/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -43,11 +44,17 @@ function ContentList({ novel }: { novel: Novel }) {
       {state.list.map((content) => (
         <div
           key={content.id}
-          className="item bg-gray-700 p-3 mb-3 rounded-md hover:cursor-pointer hover:bg-gray-800"
+          className="item bg-gray-700 overflow-hidden p-3 mb-3 rounded-md hover:cursor-pointer hover:bg-gray-800"
         >
           <div className="title">Title: {content.title}</div>
           <div className="title">Type: {content.type}</div>
-          <div className="content">content: {content.content}</div>
+          <div className="truncate  whitespace-break-spaces">
+            {content.type === ContentFileTypes.pageLink ? (
+              <Link href={`${content.content}`}>{content.content}</Link>
+            ) : (
+              content.content
+            )}
+          </div>
         </div>
       ))}
     </div>

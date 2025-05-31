@@ -30,7 +30,7 @@ function NovelListView({ list, showMenu = false }: NovelListViewProps) {
             }
           }}
         >
-          <Link href={`/novel/view/${novel.id}`}>
+          <Link href={`view/novel/${novel.id}`}>
             {" "}
             <TImage src={novel.coverUrl} alt="Not Found Image" />
             <div className="title text-center mt-2 overflow-ellipsis">
