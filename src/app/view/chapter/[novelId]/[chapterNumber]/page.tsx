@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import NextChapterButton from "./next_chapter_button";
 import Link from "next/link";
 
 async function ChapterPage({
