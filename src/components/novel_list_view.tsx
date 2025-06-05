@@ -1,9 +1,9 @@
 "use client";
 
-import { Novel } from "@/generated/prisma";
 import TImage from "./t_image";
 import { useState } from "react";
 import Link from "next/link";
+import { Novel } from "@prisma/client";
 
 type NovelListViewProps = {
   list: Novel[];
@@ -22,7 +22,7 @@ function NovelListView({ list, showMenu = false }: NovelListViewProps) {
       {list.map((novel) => (
         <div
           key={novel.id}
-          className="item rounded-md p-2 bg-gray-950 hover:bg-gray-900 hover:cursor-pointer"
+          className="item w-44 rounded-md p-2 bg-gray-950 hover:bg-gray-900 hover:cursor-pointer"
           onContextMenu={(e) => {
             e.preventDefault();
             if (showMenu) {
@@ -33,7 +33,7 @@ function NovelListView({ list, showMenu = false }: NovelListViewProps) {
           <Link href={`view/novel/${novel.id}`}>
             {" "}
             <TImage src={novel.coverUrl} alt="Not Found Image" />
-            <div className="title text-center mt-2 overflow-ellipsis">
+            <div className="title text-center mt-2 overflow-ellipsis text-sm">
               {novel.title}
             </div>
           </Link>

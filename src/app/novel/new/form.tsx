@@ -2,13 +2,12 @@
 
 import { createNovelAction } from "@/actions/novel_actions";
 import TImage from "@/components/t_image";
-import UploadCover from "@/components/upload_cover";
 import UploadedImageList from "@/components/uploaded_image_list";
 import { useActionState, useState } from "react";
 
 function Form({ userId }: { userId: string }) {
   const [state, action, pending] = useActionState(createNovelAction, null);
-  const [coverUrl, setCoverUrl] = useState("");
+  const [coverUrl, setCoverUrl] = useState("/cover.png");
 
   return (
     <div className="flex justify-between gap-3">
@@ -19,7 +18,7 @@ function Form({ userId }: { userId: string }) {
           </div>
         ) : null}
         <div className="form-container">
-          <label htmlFor="title">title</label>
+          <label htmlFor="title">အမည်</label>
           <input
             type="text"
             name="title"
@@ -86,12 +85,6 @@ function Form({ userId }: { userId: string }) {
       </form>
       {/* right side */}
       <div className="right-side mt-6 w-96">
-        <UploadCover
-          url={coverUrl}
-          onUploaded={(url) => {
-            setCoverUrl(url);
-          }}
-        />
         {/* list */}
         <UploadedImageList
           currentUrl={coverUrl}

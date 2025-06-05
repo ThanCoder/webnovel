@@ -1,9 +1,9 @@
 "use server";
 
-import { Novel } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/user";
 import { UserTypes } from "@/types/user_types";
+import { Novel } from "@prisma/client";
 import { redirect } from "next/navigation";
 
 export type NovelFormState = Omit<
@@ -64,7 +64,7 @@ export async function createNovelAction(
       state = {
         ...state,
         isError: true,
-        message: `novel title already exists!`,
+        message: `novel title already exists!(အမည်ပြောင်းလဲပေးပါ)`,
       };
       return state;
     }

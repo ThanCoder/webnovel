@@ -1,8 +1,10 @@
-export enum TImageBoxFit {
-  fill='object-fill',
-  contain='object-contain',
-  cover='object-cover',
+'use client'
 
+
+export enum TImageBoxFit {
+  fill = "object-fill",
+  contain = "object-contain",
+  cover = "object-cover",
 }
 type TImageProps = {
   src: string | undefined;
@@ -10,7 +12,7 @@ type TImageProps = {
   width?: number;
   height?: number;
   defaultSrc?: string;
-  fit?:TImageBoxFit;
+  fit?: TImageBoxFit;
 };
 
 function TImage({
@@ -19,9 +21,11 @@ function TImage({
   height = 150,
   defaultSrc = "/cover.png",
   src = "",
-  fit=TImageBoxFit.cover,
+  fit = TImageBoxFit.cover,
 }: TImageProps) {
+  // url ရှိနေရင်
   if (src && src !== "") {
+    
     return (
       <div
         style={{
@@ -30,7 +34,16 @@ function TImage({
           overflow: "hidden",
         }}
       >
-        <img alt={alt} src={src} className={`w-full h-full ${fit}`} />
+        <img
+          alt={alt}
+          src={src}
+          className={`w-full h-full ${fit}`}
+          onError={e =>{
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = defaultSrc;
+            
+          }}
+        />
       </div>
     );
   }

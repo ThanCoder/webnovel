@@ -1,5 +1,4 @@
 import TImage, { TImageBoxFit } from "@/components/t_image";
-import TLoader from "@/components/t_loader";
 import TTimeAgo from "@/components/time_ago";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/user";
@@ -52,7 +51,7 @@ async function novelView({ params }: { params: Promise<{ id: string }> }) {
         </div>
       </div>
        {/* tab */}
-     <NovelTab novel={novel}/>
+     <NovelTab novel={novel} user={user!}/>
     </div>
   );
 }

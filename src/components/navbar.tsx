@@ -6,10 +6,10 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { getCurrentUser } from "@/lib/user";
 
 async function NavBar() {
-  const user = await currentUser();
+  const user = await getCurrentUser();
 
   return (
     <div className=" bg-gray-950 ">

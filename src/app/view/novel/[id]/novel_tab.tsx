@@ -1,11 +1,11 @@
 "use client";
 
-import { Novel } from "@/generated/prisma";
 import { useState } from "react";
 import ChapterList from "./chapter_list";
 import ContentList from "./content_list";
+import { Novel, User } from "@prisma/client";
 
-function NovelTab({ novel }: { novel: Novel }) {
+function NovelTab({ novel,user }: { novel: Novel,user:User }) {
   const tabs = [
     {
       id: "home",
@@ -17,7 +17,7 @@ function NovelTab({ novel }: { novel: Novel }) {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
 
   return (
-    <div className="tabs">
+    <div className="container">
       <div className="tabs flex w-full bg-teal-950 gap-4">
         {tabs.map((tab) => (
           <div
@@ -42,7 +42,7 @@ function NovelTab({ novel }: { novel: Novel }) {
         ) : null}
         {currentTab.id === "chapter" ? <ChapterList novel={novel} /> : null}
         {currentTab.id === "contentFiles" ? (
-          <ContentList novel={novel} />
+          <ContentList novel={novel} user={user} />
         ) : null}
       </div>
     </div>

@@ -1,12 +1,13 @@
 "use client";
 
 import { novelContentAddAction } from "@/actions/novel_content_actions";
-import { Novel } from "@/generated/prisma";
+import Divider from "@/components/divider";
 import { ContentFileTypes, ContentFormType } from "@/types/types";
+import { Novel } from "@prisma/client";
 import { useActionState, useState } from "react";
 
 function ContentForm({ novel }: { novel: Novel }) {
-  const [formType, setFormType] = useState<string>(ContentFormType.chapter);
+  const [formType, setFormType] = useState<string>(ContentFormType.contentFile);
   const [fileType, setFiletype] = useState<string>(
     ContentFileTypes.downloadLink
   );
@@ -22,6 +23,21 @@ function ContentForm({ novel }: { novel: Novel }) {
     isError: false,
     message: "",
   });
+
+  function _getContentText() {
+    if (
+      fileType === ContentFileTypes.pdf ||
+      fileType === ContentFileTypes.novelData ||
+      fileType === ContentFileTypes.downloadLink
+    ) {
+      return "Content && File Url";
+    }
+    if (fileType === ContentFileTypes.pageLink) {
+      return "Content && Page Url";
+    }
+    return "Content";
+  }
+
   return (
     <div className="container mb-80">
       {state.message !== "" ? (
@@ -53,16 +69,18 @@ function ContentForm({ novel }: { novel: Novel }) {
             ))}
           </select>
         </div>
-        <div className="form-container">
-          <label htmlFor="title">title</label>
-          <input
-            defaultValue={state.title}
-            type="text"
-            name="title"
-            id="title"
-            placeholder="title..."
-          />
-        </div>
+        {formType === ContentFormType.chapter ? (
+          <div className="form-container">
+            <label htmlFor="title">title</label>
+            <input
+              defaultValue={state.title}
+              type="text"
+              name="title"
+              id="title"
+              placeholder="title..."
+            />
+          </div>
+        ) : null}
 
         {/* chatper form */}
         {formType === ContentFormType.chapter ? (
@@ -117,8 +135,20 @@ function ContentForm({ novel }: { novel: Novel }) {
                 ))}
               </select>
             </div>
+            <Divider />
             <div className="form-container">
-              <label htmlFor="content">content</label>
+              <label htmlFor="title">title (မထည့်လည်းရ)</label>
+              <input
+                defaultValue={state.title}
+                type="text"
+                name="title"
+                id="title"
+                placeholder="title..."
+              />
+            </div>
+
+            <div className="form-container">
+              <label htmlFor="content">{_getContentText()}</label>
               <input
                 defaultValue={state.content}
                 type="text"
@@ -150,7 +180,9 @@ function ContentForm({ novel }: { novel: Novel }) {
           </>
         ) : null}
         <div className="flex justify-end">
-          <button type="submit">{pending ? "Adding..." : "Add"}</button>
+          <button type="submit" className="mr-4">
+            {pending ? "Adding..." : "Add"}
+          </button>
         </div>
       </form>
     </div>

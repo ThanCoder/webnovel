@@ -6,6 +6,6 @@ export enum ContentFormType {
 export enum ContentFileTypes {
   pdf='pdf',
   novelData='novelData',
-  downloadLink='downloadLink',
+  downloadLink='otherFile',
   pageLink='pageLink',
 }
